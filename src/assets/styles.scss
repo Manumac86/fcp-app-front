@@ -1,0 +1,47 @@
+.App {
+  text-align: center;
+}
+
+.Header {
+  align-items: center;
+  background-color: #565656;
+  color: white;
+  display: flex;
+  height: 191px;
+  justify-content: space-between;
+  padding: 20px;
+
+  .Logo {
+    width: 10%;
+  }
+
+  &_Search {
+    width: 10%;
+  }
+}
+
+.VideoList {
+  background-color: black;
+  color: white;
+  height: 100%;
+  padding: 26px;
+
+  .card {
+    width: 300px;
+  }
+
+  .card-body {
+    color: black;
+  }
+
+  &_List {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+
+    &_Item {
+      margin: 10px;
+    }
+  }
+}

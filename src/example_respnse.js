@@ -1,0 +1,68 @@
+const videoList = [
+  {
+    id: 3,
+    link: 'https://youtu.be/zkyJ3zdpl3Y',
+    band: 'nuevetercios',
+    votes: 3,
+    songTitle: 'Frio',
+    thumbnail: 'holder.js/300x200?auto=yes',
+  },
+  {
+    id: 4,
+    link: 'https://youtu.be/zkyJ3zdpl3Y',
+    band: 'nuevetercios',
+    votes: 3,
+    songTitle: 'Frio',
+    thumbnail: 'holder.js/300x200?auto=yes',
+  },
+  {
+    id: 5,
+    link: 'https://youtu.be/zkyJ3zdpl3Y',
+    band: 'nuevetercios',
+    votes: 3,
+    songTitle: 'Frio',
+    thumbnail: 'holder.js/300x200?auto=yes',
+  },
+  {
+    id: 6,
+    link: 'https://youtu.be/zkyJ3zdpl3Y',
+    band: 'nuevetercios',
+    votes: 3,
+    songTitle: 'Frio',
+    thumbnail: 'holder.js/300x200?auto=yes',
+  },
+  {
+    id: 1,
+    link: 'https://youtu.be/zkyJ3zdpl3Y',
+    band: 'nuevetercios',
+    votes: 3,
+    songTitle: 'Frio',
+    thumbnail: 'holder.js/300x200?auto=yes',
+  },
+  {
+    id: 2,
+    link: 'https://youtu.be/zkyJ3zdpl3Y',
+    band: 'nuevetercios',
+    votes: 3,
+    songTitle: 'Frio',
+    thumbnail: 'holder.js/300x200?auto=yes',
+  },
+  {
+    id: 7,
+    link: 'https://youtu.be/zkyJ3zdpl3Y',
+    band: 'nuevetercios',
+    votes: 3,
+    songTitle: 'Frio',
+    thumbnail: 'holder.js/300x200?auto=yes',
+  },
+  {
+    id: 8,
+    link: 'https://youtu.be/zkyJ3zdpl3Y',
+    band: 'nuevetercios',
+    votes: 3,
+    songTitle: 'Frio',
+    thumbnail: 'holder.js/300x200?auto=yes',
+  },
+];
+
+export default videoList;
