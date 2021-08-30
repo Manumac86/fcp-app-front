@@ -14,7 +14,11 @@ const Header = (props) => {
           <p>Concurso de bandas</p>
         </Container>
       </Jumbotron>
-      <input className="Header_Search" type="text"></input>
+      <input
+        className="Header_Search"
+        type="text"
+        placeholder="Buscar..."
+      ></input>
     </div>
   );
 };
