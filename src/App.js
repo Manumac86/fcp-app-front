@@ -88,7 +88,7 @@ function App() {
     } else {
       setFilteredVideoList(videoList);
     }
-  }, [searchText]);
+  }, [searchText, videoList]);
 
   return (
     <div className="App">

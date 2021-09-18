@@ -1,8 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 const Modal = ({ isOpen, isVoteSuccess, data, onCloseModal, onVote }) => {
-  console.log(data);
   return (
     <div
       className={`modal fade ${isOpen ? 'show' : ''}`}
@@ -77,7 +75,5 @@ const Modal = ({ isOpen, isVoteSuccess, data, onCloseModal, onVote }) => {
     </div>
   );
 };
-
-Modal.propTypes = {};
 
 export default Modal;

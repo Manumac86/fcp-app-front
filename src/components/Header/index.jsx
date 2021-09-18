@@ -1,9 +1,7 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
 import Logo from './Logo.jsx';
 import searchIcon from '../../assets/searchIcon.svg';
 import logoVamosLasBandas from '../../assets/vamosLasBandasLogo.svg';
-import PropTypes from 'prop-types';
 
 const Header = ({ searchText, onSearch }) => {
   return (
@@ -15,7 +13,7 @@ const Header = ({ searchText, onSearch }) => {
         <div className="input-group Header_Search">
           <div className="input-group-prepend">
             <span className="input-group-text">
-              <img src={searchIcon} />
+              <img alt="search" src={searchIcon} />
             </span>
           </div>
           <input

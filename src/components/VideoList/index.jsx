@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Card, Button, Spinner } from 'react-bootstrap';
+import { Container, Card, Spinner } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 const VideoList = ({ isLoading, searchText, videoList, onVote }) => {
@@ -26,7 +26,10 @@ const VideoList = ({ isLoading, searchText, videoList, onVote }) => {
                     className="VideoList_List_Item_Image_Button"
                     onClick={(e) => handleVote(e, videoItem)}
                   >
-                    <img src={`${videoItem.thumbnail}`} />
+                    <img
+                      alt={`Video Thumbnail`}
+                      src={`${videoItem.thumbnail}`}
+                    />
                   </button>
                   <Card.Body>
                     <Card.Text>
