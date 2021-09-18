@@ -9,9 +9,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   const [videoList, setVideoList] = useState([]);
+  const [filteredVideoList, setFilteredVideoList] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isLoadingVideos, setIsLoadingVideos] = useState(false);
   const [modalData, setModalData] = useState({});
   const [isVoteSuccess, setIsVoteSuccess] = useState(false);
+  const [searchText, setSearchText] = useState('');
 
   const openModal = (data) => {
     const videoId = data.url
@@ -43,7 +46,12 @@ function App() {
     });
   };
 
+  const handleSearch = (e) => {
+    setSearchText(e.target.value);
+  };
+
   useEffect(() => {
+    setIsLoadingVideos(true);
     getVideos('bands').then((querySnapshot) => {
       const videoListResponse = [];
       querySnapshot.forEach((doc) => {
@@ -62,14 +70,35 @@ function App() {
       });
       if (videoListResponse.length) {
         setVideoList(videoListResponse);
+        setFilteredVideoList(videoListResponse);
+        setIsLoadingVideos(false);
       }
     });
   }, []);
 
+  useEffect(() => {
+    if (searchText.length) {
+      setFilteredVideoList(
+        videoList.filter(
+          (video) =>
+            video.title.toLowerCase().includes(searchText.toLowerCase()) ||
+            video.artist.toLowerCase().includes(searchText.toLowerCase())
+        )
+      );
+    } else {
+      setFilteredVideoList(videoList);
+    }
+  }, [searchText]);
+
   return (
     <div className="App">
-      <Header />
-      <VideoList videoList={videoList} onVote={openModal} />
+      <Header onSearch={handleSearch} searchText={searchText} />
+      <VideoList
+        isLoading={isLoadingVideos}
+        searchText={searchText}
+        videoList={filteredVideoList}
+        onVote={openModal}
+      />
       {isModalOpen && (
         <Modal
           isOpen={isModalOpen}

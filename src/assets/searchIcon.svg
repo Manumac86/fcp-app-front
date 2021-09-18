@@ -4,19 +4,19 @@
   width="16"
   height="16"
   data-icon="magnifying-glass"
-  class="iconic-magnifying-glass iconic-size-sm injected-svg iconic"
+  className="iconic-magnifying-glass iconic-size-sm injected-svg iconic"
   viewBox="0 0 16 16"
   data-src="/iconic/svg/magnifying-glass-sm.svg"
 >
-  <g class="iconic-metadata">
+  <g className="iconic-metadata">
     <title>Magnifying Glass</title>
   </g>
-  <g class="iconic-container" data-width="16" data-height="16">
+  <g className="iconic-container" data-width="16" data-height="16">
     <path
       stroke="#FFF"
       stroke-width="3"
       stroke-linecap="round"
-      class="iconic-magnifying-glass-handle iconic-property-stroke"
+      className="iconic-magnifying-glass-handle iconic-property-stroke"
       fill="none"
       d="M11 11l3.5 3.5"
     ></path>
@@ -26,7 +26,7 @@
       cx="6.5"
       cy="6.5"
       r="5.5"
-      class="iconic-magnifying-glass-rim iconic-property-stroke"
+      className="iconic-magnifying-glass-rim iconic-property-stroke"
       fill="none"
     ></circle>
   </g>

@@ -5,7 +5,7 @@ import searchIcon from '../../assets/searchIcon.svg';
 import logoVamosLasBandas from '../../assets/vamosLasBandasLogo.svg';
 import PropTypes from 'prop-types';
 
-const Header = (props) => {
+const Header = ({ searchText, onSearch }) => {
   return (
     <div className="Header">
       <div className="Header_Logo_Container">
@@ -13,8 +13,8 @@ const Header = (props) => {
       </div>
       <div className="container Header_Search_Container">
         <div className="input-group Header_Search">
-          <div class="input-group-prepend">
-            <span class="input-group-text">
+          <div className="input-group-prepend">
+            <span className="input-group-text">
               <img src={searchIcon} />
             </span>
           </div>
@@ -23,6 +23,8 @@ const Header = (props) => {
             className="form-control"
             aria-label="Large"
             aria-describedby="inputGroup-sizing-sm"
+            onChange={(e) => onSearch(e)}
+            value={searchText}
           />
         </div>
       </div>

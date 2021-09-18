@@ -2,7 +2,7 @@ import React from 'react';
 import { Container, Card, Button, Spinner } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
-const VideoList = ({ videoList, onVote }) => {
+const VideoList = ({ isLoading, searchText, videoList, onVote }) => {
   const handleVote = (event, videoItem) => {
     event.preventDefault();
     onVote(videoItem);
@@ -11,10 +11,14 @@ const VideoList = ({ videoList, onVote }) => {
   return (
     <div className="VideoList">
       <Container>
-        <h1>¡VOTÁ A TU BANDA FAVORITA!</h1>
+        <h1>
+          {searchText && videoList.length
+            ? `Resultados para ${searchText}`
+            : '¡VOTÁ A TU BANDA FAVORITA!'}
+        </h1>
         <ul className="VideoList_List">
           {videoList &&
-            !!videoList.length &&
+            !isLoading &&
             videoList.map((videoItem) => (
               <div className="VideoList_List_Item" key={videoItem.id}>
                 <div>
@@ -34,10 +38,13 @@ const VideoList = ({ videoList, onVote }) => {
                 </div>
               </div>
             ))}
-          {!videoList.length && (
+          {isLoading && (
             <div className="w-full h-full d-flex align-items-center">
               <Spinner animation="grow" variant="primary" />
             </div>
+          )}
+          {!isLoading && !videoList.length && (
+            <h2>No Encontramos Resultados para {searchText}</h2>
           )}
         </ul>
       </Container>
