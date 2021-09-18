@@ -29,9 +29,8 @@ const login = () => {
 const getVideos = (contest) =>
   contestsCollection.doc(contest).collection('videos').get();
 
-const updateVideo = () => {
-  return new Promise();
-};
+const updateVideo = (contest, doc) =>
+  contestsCollection.doc(contest).collection('videos').doc(doc.id).update(doc);
 
 const deleteVideo = () => {
   return new Promise();

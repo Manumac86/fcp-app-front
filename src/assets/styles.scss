@@ -1,37 +1,92 @@
+@font-face {
+  font-family: 'Barlow Condensed';
+  src: url('./fonts/BarlowCondensed-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Barlow Condensed Bold Italic';
+  src: url('./fonts/BarlowCondensed-BoldItalic.ttf');
+}
+
 .App {
   text-align: center;
+
+  .video {
+    min-width: 300px;
+    min-height: 300px;
+  }
 }
 
 .Header {
   align-items: center;
-  background-color: #565656;
+  background-color: #181818;
   color: white;
   display: flex;
-  height: 191px;
-  justify-content: space-between;
-  padding: 20px;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
 
-  .Logo {
-    width: 20%;
+  &_Logo_Container {
+    background-color: white;
+    padding: 5% 10%;
+    width: 100%;
+
+    .Logo {
+      img {
+        width: 100%;
+      }
+    }
   }
 
-  &_Search {
-    width: 20%;
+  &_Search_Container {
+    background: #181818;
+    padding: 26px;
+  }
+
+  &_Search.input-group {
+    width: auto;
+    outline: none !important;
+
+    .form-control {
+      background-color: #6f6f6f !important;
+      color: white;
+      outline: none !important;
+      box-shadow: none;
+      border-radius: 0;
+      border: none;
+      outline: none;
+    }
+
+    .form-control:focus {
+      outline: none !important;
+    }
+
+    .input-group-prepend {
+      .input-group-text {
+        color: white;
+        background-color: #6f6f6f !important;
+        border: none;
+        border-radius: 0;
+        height: 40px;
+      }
+    }
   }
 }
 
 .VideoList {
-  background-color: black;
+  background-color: #181818;
   color: white;
+  font-family: 'Barlow Condensed';
   height: 100%;
   padding: 26px;
 
-  .card {
-    width: 300px;
-  }
-
-  .card-body {
-    color: black;
+  h1 {
+    font-family: 'Barlow Condensed Bold Italic';
+    font-weight: 800;
+    font-size: 48px;
+    font-style: italic;
+    line-height: 1em;
   }
 
   &_List {
@@ -44,15 +99,35 @@
     padding: 0;
 
     &_Item {
-      margin: 10px;
+      border: none;
+      margin-top: 10px;
       text-decoration: none;
+      width: 100%;
+
+      .card-body {
+        background-color: #181818;
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+        font-weight: 800;
+        font-size: 24px;
+        text-align: left;
+        padding: 10px 0;
+        margin-bottom: 40px;
+      }
 
       &_Image_Button {
         background: none;
         border: none;
+        border-radius: 0px;
         color: transparent;
         margin: 0;
         padding: 0;
+        width: 100%;
+
+        img {
+          width: 100%;
+        }
       }
     }
   }
