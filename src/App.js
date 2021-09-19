@@ -2,7 +2,14 @@ import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import VideoList from './components/VideoList';
 import Modal from './components/Modal';
-import { getVideos, updateVideo } from './api';
+import {
+  auth,
+  getVideos,
+  updateVideo,
+  login,
+  getUsers,
+  createUser,
+} from './api';
 import 'holderjs';
 import './assets/styles.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -15,6 +22,9 @@ function App() {
   const [modalData, setModalData] = useState({});
   const [isVoteSuccess, setIsVoteSuccess] = useState(false);
   const [searchText, setSearchText] = useState('');
+  const [user, setUser] = useState({});
+  const [isReturningUser, setIsReturningUser] = useState(false);
+  const [authToken, setAuthToken] = useState('');
 
   const openModal = (data) => {
     const videoId = data.url
@@ -40,10 +50,53 @@ function App() {
     const [votedVideo] = videoList.filter(
       (video) => video.id === modalVideo.id
     );
-    votedVideo.votes++;
-    updateVideo('bands', votedVideo).then((response) => {
-      setIsVoteSuccess(true);
-    });
+    login()
+      .then((result) => {
+        return {
+          token: result.credential.accessToken,
+          user: result.user.multiFactor.user,
+        };
+      })
+      .then((res) => {
+        setUser(res.user);
+        setAuthToken(res.token);
+        const userAuth = auth.currentUser;
+        // console.log(userAuth.multiFactor.user.email);
+        getUsers().then((querySnapshot) => {
+          const usersListResponse = [];
+          querySnapshot.forEach((doc) => {
+            usersListResponse.push(doc.data());
+          });
+          if (usersListResponse.some((u) => u.email === res.user.email)) {
+            setIsReturningUser(true);
+          } else {
+            if (userAuth.multiFactor.user.email.length) {
+              createUser({
+                email: res.user.email,
+                name: res.user.displayName,
+                voted: true,
+                votedVideo: votedVideo.id,
+              }).then(() => {
+                votedVideo.votes++;
+                updateVideo('bands', votedVideo).then(() => {
+                  setIsVoteSuccess(true);
+                });
+              });
+            } else {
+              alert(
+                'Error: No pudimos identificarte. Por favor, intenta nuevamente.'
+              );
+              setIsVoteSuccess(false);
+            }
+          }
+        });
+      })
+      .catch((err) => {
+        alert(
+          'Error: No pudimos identificarte. Por favor, intenta nuevamente.'
+        );
+        setIsVoteSuccess(false);
+      });
   };
 
   const handleSearch = (e) => {
@@ -103,6 +156,7 @@ function App() {
         <Modal
           isOpen={isModalOpen}
           isVoteSuccess={isVoteSuccess}
+          isReturningUser={isReturningUser}
           data={modalData}
           onCloseModal={handleModalClose}
           onVote={handleVote}
