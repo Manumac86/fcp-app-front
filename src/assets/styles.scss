@@ -133,29 +133,52 @@
   }
 }
 
+.modal-container {
+  font-family: 'Barlow Condensed';
+  max-width: 90%;
+  margin: auto;
+  margin-top: 20%;
+
+  .close {
+    font-size: 34px;
+  }
+
+  .modal-title {
+    font-family: 'Barlow Condensed Bold Italic';
+    font-size: 24px;
+    text-align: left;
+  }
+
+  .modal-content {
+    max-height: 80vh;
+  }
+
+  .modal-body {
+    max-height: 90vh;
+
+    .modal-bio {
+      max-height: 120px;
+      overflow-y: scroll;
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
+    }
+    .modal-bio::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
 @media only screen and (min-width: 768px) {
   .Header {
-    align-items: center;
-    background-color: #181818;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 100%;
-
     &_Logo_Container {
-      background-color: white;
-      padding: 5% 10%;
-      width: 100%;
-
       .Logo {
         img {
-          width: 60%;
+          width: 50%;
         }
       }
     }
   }
+
   .VideoList {
     flex-wrap: nowrap;
     justify-content: space-around;
@@ -164,5 +187,16 @@
   .VideoList_List_Item {
     width: 30%;
     margin: 10px;
+  }
+  .modal-container {
+    max-width: 40%;
+    margin: auto;
+    margin-top: 11%;
+  }
+
+  .modal-body {
+    iframe {
+      height: 315px;
+    }
   }
 }

@@ -15,7 +15,7 @@ const Modal = ({
         display: `${isOpen ? 'block' : 'none'}`,
       }}
     >
-      <div className="modal-body container">
+      <div className="modal-container">
         <div className="modal-content">
           {isReturningUser && (
             <>
@@ -76,7 +76,6 @@ const Modal = ({
                     <div className="video">
                       <iframe
                         width="100%"
-                        height="315px"
                         src={data.url}
                         title="YouTube video player"
                         frameBorder="0"
@@ -84,7 +83,7 @@ const Modal = ({
                         allowFullScreen
                       ></iframe>
                       <div className="h3">{data.title}</div>
-                      <div>{data.bio}</div>
+                      <div className="modal-bio">{data.bio}</div>
                     </div>
                   )
                 )}
