@@ -90,7 +90,7 @@ const Modal = ({
                   <div className="d-flex flex-column modal-dialog modal-dialog-centered">
                     <strong className="h2 mb-4">¡GRACIAS POR TU VOTO!</strong>
                     <img src={logoVoto} alt="logo voto" />
-                    <p style={{ fontSize: '34px' }}>
+                    <p style={{ fontSize: '24px' }}>
                       VOLVÉ EL{' '}
                       <span style={{ color: '#C1272D' }}>19 DE NOVIEMBRE</span>
                       <br />
