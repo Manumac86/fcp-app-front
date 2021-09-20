@@ -58,9 +58,10 @@ const Modal = ({
               </div>
               <div className="modal-footer">
                 <p style={{ fontSize: '24px', margin: '0', color: 'white' }}>
-                  YA REGISTRAMOS TU VOTO ANTERIORMENTE! VOLVÉ EL{' '}
-                  <span style={{ color: '#C1272D' }}>19 DE NOVIEMBRE</span>
+                  YA REGISTRAMOS TU VOTO ANTERIORMENTE!
                   <br />
+                  VOLVÉ EL
+                  <span style={{ color: '#C1272D' }}> 19 DE NOVIEMBRE </span>
                   PARA VER LOS RESULTADOS FINALES
                 </p>
               </div>
