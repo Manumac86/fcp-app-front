@@ -187,18 +187,20 @@
     }
 
     i {
-      font-size: 32px;
-      padding: 10px;
+      font-size: 18px;
+      padding: 3px;
     }
 
-    &_Image {
+    &_Image a {
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 0 10px;
+      padding: 0 3px;
+      height: 27px;
+
       img {
-        width: 32px;
-        height: 32px;
+        width: 18px;
+        height: 18px;
       }
     }
   }
@@ -329,6 +331,24 @@
     width: 100%;
     height: 80px;
     padding-right: 10px;
+
+    i {
+      font-size: 32px;
+      padding: 10px;
+    }
+    &_Right {
+      &_Image a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 10px;
+
+        img {
+          width: 32px;
+          height: 32px;
+        }
+      }
+    }
   }
   .modal-container {
     margin: auto;
