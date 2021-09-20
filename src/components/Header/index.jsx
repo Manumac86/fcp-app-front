@@ -9,7 +9,9 @@ const Header = ({ searchText, onSearch }) => {
     <div className="Header">
       <div className="Header_Logo_Container">
         <Logo img={logoVamosLasBandas} styleClassName={'fcp'} />
-        <Logo img={logoFCP} styleClassName={'fcp'} />
+        <a href="https://www.instagram.com/fcpatagonia/" target="_blank">
+          <Logo img={logoFCP} styleClassName={'fcp'} />
+        </a>
       </div>
       <div className="container Header_Search_Container">
         <div className="input-group Header_Search">

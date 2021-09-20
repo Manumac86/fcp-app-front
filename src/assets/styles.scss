@@ -1,3 +1,4 @@
+@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css');
 @font-face {
   font-family: 'Barlow Condensed';
   src: url('./fonts/BarlowCondensed-Regular.ttf');
@@ -138,6 +139,71 @@
   }
 }
 
+.Footer {
+  width: 100%;
+  height: 50px;
+  background-color: #454545;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 10px;
+
+  .btn.btn-primary {
+    outline: none;
+    border-radius: 0;
+    font-size: 24px;
+    line-height: 24px;
+    background-color: transparent;
+    border: none;
+    width: 213px;
+    background-image: url('./voteButton.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  .vote-button.btn.btn-primary:focus,
+  .vote-button.btn.btn-primary:hover {
+    outline: none !important;
+  }
+
+  a,
+  a:focus,
+  a:hover {
+    outline: none !important;
+  }
+
+  &_Right {
+    display: flex;
+    justify-content: center;
+    color: black;
+    align-items: center;
+
+    a,
+    a:visited,
+    a:hover {
+      color: black;
+    }
+
+    i {
+      font-size: 32px;
+      padding: 10px;
+    }
+
+    &_Image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0 10px;
+      img {
+        width: 32px;
+        height: 32px;
+      }
+    }
+  }
+}
+
 .modal {
   background-color: rgba(0, 0, 0, 0.8);
 }
@@ -257,6 +323,12 @@
   .VideoList_List_Item {
     width: 30%;
     margin: 10px;
+  }
+
+  .Footer {
+    width: 100%;
+    height: 80px;
+    padding-right: 10px;
   }
   .modal-container {
     margin: auto;

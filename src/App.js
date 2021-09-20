@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import VideoList from './components/VideoList';
 import Modal from './components/Modal';
+import Footer from './components/Footer';
 import {
   auth,
   getVideos,
@@ -153,6 +154,7 @@ function App() {
         videoList={filteredVideoList}
         onVote={openModal}
       />
+      <Footer />
       {isModalOpen && (
         <Modal
           isOpen={isModalOpen}
