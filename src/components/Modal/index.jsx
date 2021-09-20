@@ -1,4 +1,5 @@
 import React from 'react';
+import logoVoto from '../../assets/logoVoto.svg';
 
 const Modal = ({
   isOpen,
@@ -14,13 +15,23 @@ const Modal = ({
       style={{
         display: `${isOpen ? 'block' : 'none'}`,
       }}
+      onClick={(e) => {
+        onCloseModal(e);
+      }}
     >
       <div className="modal-container">
-        <div className="modal-content">
+        <div
+          className="modal-content"
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+        >
           {isReturningUser && (
             <>
-              <div className="modal-header">
-                <h5 className="modal-title">Gracias por tu apoyo!</h5>
+              <div
+                className="modal-header"
+                style={{ justifyContent: 'flex-end' }}
+              >
                 <button
                   type="button"
                   className="btn close"
@@ -32,13 +43,26 @@ const Modal = ({
                 </button>
               </div>
               <div className="modal-body">
-                <div className="d-flex flex-column modal-dialog modal-dialog-centered">
-                  <strong className="h2 mb-4">Ya votaste anteriormente!</strong>
-                  <p>
-                    Te recordamos que solo puedes votar una vez! <br />
-                    Que gane el mejor!
-                  </p>
+                <div className="video">
+                  <iframe
+                    width="100%"
+                    src={data.url}
+                    title="YouTube video player"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
+                  <div className="h3">{data.title}</div>
+                  <div className="modal-bio">{data.bio}</div>
                 </div>
+              </div>
+              <div className="modal-footer">
+                <p style={{ fontSize: '24px', margin: '0', color: 'white' }}>
+                  YA REGISTRAMOS TU VOTO ANTERIORMENTE! VOLVÉ EL{' '}
+                  <span style={{ color: '#C1272D' }}>19 DE NOVIEMBRE</span>
+                  <br />
+                  PARA VER LOS RESULTADOS FINALES
+                </p>
               </div>
             </>
           )}
@@ -47,7 +71,7 @@ const Modal = ({
               <div className="modal-header">
                 <h5 className="modal-title">
                   {isVoteSuccess
-                    ? 'Gracias por participar!'
+                    ? 'Voto enviado correctamente'
                     : `Estas por votar el video de "${data.artist}"`}
                 </h5>
                 <button
@@ -63,12 +87,13 @@ const Modal = ({
               <div className="modal-body">
                 {isVoteSuccess ? (
                   <div className="d-flex flex-column modal-dialog modal-dialog-centered">
-                    <strong className="h2 mb-4">
-                      Gracias por haber votado!
-                    </strong>
-                    <p>
-                      Te recordamos que solo puedes votar una vez! <br />
-                      Que gane el mejor!
+                    <strong className="h2 mb-4">¡GRACIAS POR TU VOTO!</strong>
+                    <img src={logoVoto} alt="logo voto" />
+                    <p style={{ fontSize: '34px' }}>
+                      VOLVÉ EL{' '}
+                      <span style={{ color: '#C1272D' }}>19 DE NOVIEMBRE</span>
+                      <br />
+                      PARA VER LOS RESULTADOS FINALES
                     </p>
                   </div>
                 ) : (

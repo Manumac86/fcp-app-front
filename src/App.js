@@ -24,6 +24,8 @@ function App() {
   const [searchText, setSearchText] = useState('');
   const [user, setUser] = useState({});
   const [isReturningUser, setIsReturningUser] = useState(false);
+  const [isLoginError, setIsLoginError] = useState(false);
+
   const [authToken, setAuthToken] = useState('');
 
   const openModal = (data) => {
@@ -37,11 +39,13 @@ function App() {
     };
     setModalData(dataForModal);
     setIsModalOpen(true);
+    setIsVoteSuccess(false);
   };
 
   const handleModalClose = (e) => {
     e.preventDefault();
     setIsModalOpen(false);
+    setIsLoginError(false);
     setModalData({});
   };
 
@@ -81,20 +85,17 @@ function App() {
                 updateVideo('bands', votedVideo).then(() => {
                   setIsVoteSuccess(true);
                 });
+                setIsLoginError(false);
               });
             } else {
-              alert(
-                'Error: No pudimos identificarte. Por favor, intenta nuevamente.'
-              );
               setIsVoteSuccess(false);
             }
           }
         });
       })
       .catch((err) => {
-        alert(
-          'Error: No pudimos identificarte. Por favor, intenta nuevamente.'
-        );
+        setIsModalOpen(false);
+        setIsLoginError(true);
         setIsVoteSuccess(false);
       });
   };
@@ -161,6 +162,50 @@ function App() {
           onCloseModal={handleModalClose}
           onVote={handleVote}
         />
+      )}
+      {!isModalOpen && isLoginError && (
+        <div
+          className={'modal fade show'}
+          style={{
+            display: 'block',
+          }}
+          onClick={handleModalClose}
+        >
+          <div className="modal-container">
+            <div
+              className="modal-content"
+              onClick={(e) => {
+                e.stopPropagation();
+              }}
+            >
+              <>
+                <div
+                  className="modal-header"
+                  style={{ justifyContent: 'flex-end' }}
+                >
+                  <button
+                    type="button"
+                    className="btn close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                    onClick={handleModalClose}
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div className="modal-body">
+                  <p style={{ fontSize: '24px', margin: '0' }}>
+                    <span style={{ color: '#C1272D' }}>
+                      NO PUDIMOS IDENTIFICARTE.
+                    </span>{' '}
+                    <br></br> POR FAVOR, RECARGA LA PAGINA EN INTENTA
+                    NUEVAMENTE.
+                  </p>
+                </div>
+              </>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );

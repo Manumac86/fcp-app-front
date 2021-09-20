@@ -191,6 +191,8 @@
       }
     }
     .modal-footer {
+      border-bottom: none !important;
+      border-top: none !important;
       background-color: transparent;
       display: flex;
       justify-content: center;
