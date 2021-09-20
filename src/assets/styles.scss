@@ -28,11 +28,16 @@
   width: 100%;
 
   &_Logo_Container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: white;
-    padding: 5% 10%;
     width: 100%;
 
     .Logo {
+      display: flex;
+      justify-content: center;
+      padding: 20px;
       img {
         width: 100%;
       }
@@ -203,7 +208,7 @@
     &_Logo_Container {
       .Logo {
         img {
-          width: 50%;
+          width: 100%;
         }
       }
     }
@@ -238,7 +243,7 @@
     &_Logo_Container {
       .Logo {
         img {
-          width: 50%;
+          width: 100%;
         }
       }
     }
