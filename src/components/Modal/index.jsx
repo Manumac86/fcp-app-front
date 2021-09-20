@@ -91,18 +91,11 @@ const Modal = ({
             </>
           )}
           <div className="modal-footer">
-            <button
-              type="button"
-              className="btn btn-secondary"
-              onClick={onCloseModal}
-            >
-              {isReturningUser || isVoteSuccess ? 'Cerrar' : 'Cancelar'}
-            </button>
             {!isVoteSuccess && !isReturningUser && (
               <button
                 type="button"
                 disabled={isVoteSuccess || isReturningUser}
-                className="btn btn-primary"
+                className="vote-button btn btn-primary"
                 onClick={(e) => onVote(e, data)}
               >
                 <strong>Votar +</strong>

@@ -133,37 +133,67 @@
   }
 }
 
+.modal {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
 .modal-container {
   font-family: 'Barlow Condensed';
   max-width: 90%;
   margin: auto;
   margin-top: 20%;
 
-  .close {
-    font-size: 34px;
-  }
-
-  .modal-title {
-    font-family: 'Barlow Condensed Bold Italic';
+  .vote-button.btn.btn-primary {
     font-size: 24px;
-    text-align: left;
+    line-height: 24px;
+    background-color: transparent;
+    border: none;
+    width: 213px;
+    background-image: url('./voteButton.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
   }
 
   .modal-content {
+    border: none;
+    background-color: transparent;
     max-height: 80vh;
-  }
 
-  .modal-body {
-    max-height: 90vh;
+    .modal-header {
+      padding: 0;
+      background-color: transparent;
 
-    .modal-bio {
-      max-height: 120px;
-      overflow-y: scroll;
-      -ms-overflow-style: none; /* IE and Edge */
-      scrollbar-width: none; /* Firefox */
+      .close {
+        padding: 0;
+        color: white;
+        font-size: 48px;
+      }
+
+      .modal-title {
+        font-family: 'Barlow Condensed Bold Italic';
+        font-size: 24px;
+        text-align: left;
+        color: white;
+      }
     }
-    .modal-bio::-webkit-scrollbar {
-      display: none;
+    .modal-body {
+      background-color: white;
+      max-height: 90vh;
+
+      .modal-bio {
+        max-height: 120px;
+        overflow-y: scroll;
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+      }
+      .modal-bio::-webkit-scrollbar {
+        display: none;
+      }
+    }
+    .modal-footer {
+      background-color: transparent;
+      display: flex;
+      justify-content: center;
     }
   }
 }
@@ -228,6 +258,15 @@
     .modal-content {
       max-height: none;
     }
+    .modal-header {
+      .close {
+        color: white;
+        font-size: 48px;
+        position: relative;
+        right: -5%;
+        height: 32px;
+      }
+    }
   }
 
   .modal-body {
@@ -251,6 +290,7 @@
     width: 60%;
     margin: auto;
     margin-top: 8%;
+
     .modal-footer .btn {
       font-size: 18px;
     }
@@ -267,35 +307,6 @@
 }
 
 @media only screen and (min-width: 1400px) {
-  .Header {
-    &_Logo_Container {
-      .Logo {
-        img {
-          width: 50%;
-        }
-      }
-    }
-  }
-
-  .VideoList {
-    flex-wrap: nowrap;
-    justify-content: space-around;
-  }
-
-  .VideoList_List_Item {
-    width: 30%;
-    margin: 10px;
-  }
-
-  .modal-container {
-    width: 30%;
-    margin: auto;
-    margin-top: 3%;
-  }
-  .modal-bio {
-    font-size: 18px;
-  }
-
   .modal-header {
     .close {
       font-size: 34px;
@@ -305,7 +316,14 @@
       font-size: 24px;
     }
   }
-
+  .modal-container {
+    width: 30%;
+    margin: auto;
+    margin-top: 3%;
+  }
+  .modal-bio {
+    font-size: 18px;
+  }
   .modal-body {
     iframe {
       height: 315px;
