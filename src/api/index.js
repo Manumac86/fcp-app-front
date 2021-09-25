@@ -8,7 +8,7 @@ import {
 const login = () => {
   return auth.signInWithPopup(provider);
 };
-
+const getContest = (contest) => contestsCollection.doc(contest).get();
 const getVideos = (contest) =>
   contestsCollection.doc(contest).collection('videos').get();
 
@@ -26,6 +26,7 @@ const createUser = (user) => usersCollection.doc().set(user);
 export {
   auth,
   login,
+  getContest,
   getVideos,
   getUsers,
   createUser,

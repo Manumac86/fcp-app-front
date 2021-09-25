@@ -100,7 +100,7 @@
     flex-wrap: wrap;
     min-height: calc(100vh - 315px);
     height: 100%;
-    justify-content: center;
+    justify-content: space-between;
     list-style: none;
     padding: 0;
 
@@ -109,6 +109,7 @@
       margin-top: 10px;
       text-decoration: none;
       width: 100%;
+      max-width: 23%;
 
       .card-body {
         background-color: #181818;
@@ -150,6 +151,14 @@
   align-items: center;
   padding-right: 10px;
 
+  .container {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   .btn.btn-primary {
     outline: none;
     border-radius: 0;
@@ -179,11 +188,15 @@
     justify-content: center;
     color: black;
     align-items: center;
+    width: 20%;
 
     a,
     a:visited,
     a:hover {
       color: black;
+      img {
+        width: 25px;
+      }
     }
 
     i {
@@ -203,6 +216,9 @@
         height: 18px;
       }
     }
+  }
+  &_Left {
+    width: 20%;
   }
 }
 
@@ -288,8 +304,7 @@
   }
 
   .VideoList_List_Item {
-    width: 40%;
-    margin: 10px;
+    max-width: 23%;
   }
   .modal-container {
     margin: 5% auto;
@@ -323,7 +338,6 @@
   }
 
   .VideoList_List_Item {
-    width: 30%;
     margin: 10px;
   }
 

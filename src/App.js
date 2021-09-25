@@ -5,6 +5,7 @@ import Modal from './components/Modal';
 import Footer from './components/Footer';
 import {
   auth,
+  getContest,
   getVideos,
   updateVideo,
   login,
@@ -26,6 +27,7 @@ function App() {
   const [user, setUser] = useState({});
   const [isReturningUser, setIsReturningUser] = useState(false);
   const [isLoginError, setIsLoginError] = useState(false);
+  const [isContestActive, setIsContentActive] = useState(false);
 
   const [authToken, setAuthToken] = useState('');
 
@@ -106,30 +108,39 @@ function App() {
   };
 
   useEffect(() => {
-    setIsLoadingVideos(true);
-    getVideos('bands').then((querySnapshot) => {
-      const videoListResponse = [];
-      querySnapshot.forEach((doc) => {
-        const youtubeVideoId = doc
-          .data()
-          .url.split('https://www.youtube.com/watch?v=')[1]
-          .split('&')[0];
-        const thumbnail = youtubeVideoId
-          ? `https://img.youtube.com/vi/${youtubeVideoId}/0.jpg`
-          : '';
-        videoListResponse.push({
-          thumbnail,
-          id: doc.id,
-          ...doc.data(),
-        });
-      });
-      if (videoListResponse.length) {
-        setVideoList(videoListResponse);
-        setFilteredVideoList(videoListResponse);
-        setIsLoadingVideos(false);
-      }
-    });
+    getContest('bands').then((querySnapshot) => {
+      const { isActive } = querySnapshot.data();
+      setIsContentActive(isActive);
+    })
   }, []);
+
+  useEffect(() => {
+    if(isContestActive) {
+      setIsLoadingVideos(true);
+      getVideos('bands').then((querySnapshot) => {
+        const videoListResponse = [];
+        querySnapshot.forEach((doc) => {
+          const youtubeVideoId = doc
+            .data()
+            .url.split('https://www.youtube.com/watch?v=')[1]
+            .split('&')[0];
+          const thumbnail = youtubeVideoId
+            ? `https://img.youtube.com/vi/${youtubeVideoId}/0.jpg`
+            : '';
+          videoListResponse.push({
+            thumbnail,
+            id: doc.id,
+            ...doc.data(),
+          });
+        });
+        if (videoListResponse.length) {
+          setVideoList(videoListResponse);
+          setFilteredVideoList(videoListResponse);
+          setIsLoadingVideos(false);
+        }
+      });
+    }
+  }, [isContestActive])
 
   useEffect(() => {
     if (searchText.length) {
@@ -148,12 +159,18 @@ function App() {
   return (
     <div className="App">
       <Header onSearch={handleSearch} searchText={searchText} />
-      <VideoList
-        isLoading={isLoadingVideos}
-        searchText={searchText}
-        videoList={filteredVideoList}
-        onVote={openModal}
-      />
+      {
+        isContestActive && 
+        <VideoList
+          isLoading={isLoadingVideos}
+          searchText={searchText}
+          videoList={filteredVideoList}
+          onVote={openModal}
+        />
+      }
+      {
+        !isContestActive && <div className="VideoList" style={{height: 'calc(100vh - 180px - 80px', fontSize: "3em"}}>No hay concursos activos! Verifica nuestras redes para saber más.</div>
+      }
       <Footer />
       {isModalOpen && (
         <Modal
