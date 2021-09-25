@@ -15,6 +15,8 @@ import {
 import 'holderjs';
 import './assets/styles.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Spinner } from 'react-bootstrap';
+
 
 function App() {
   const [videoList, setVideoList] = useState([]);
@@ -108,9 +110,11 @@ function App() {
   };
 
   useEffect(() => {
+    setIsLoadingVideos(true);
     getContest('bands').then((querySnapshot) => {
       const { isActive } = querySnapshot.data();
       setIsContentActive(isActive);
+      setIsLoadingVideos(false);
     })
   }, []);
 
@@ -159,8 +163,13 @@ function App() {
   return (
     <div className="App">
       <Header onSearch={handleSearch} searchText={searchText} />
+      {isLoadingVideos && (
+        <div className="VideoList" style={{height: 'calc(100vh - 80px', fontSize: "3em"}}>
+          <Spinner animation="grow" variant="primary" />
+        </div>
+      )}
       {
-        isContestActive && 
+        isContestActive &&
         <VideoList
           isLoading={isLoadingVideos}
           searchText={searchText}
