@@ -142,7 +142,6 @@
 
 .Footer {
   width: 100%;
-  height: 50px;
   background-color: #454545;
   position: fixed;
   bottom: 0;
@@ -150,14 +149,6 @@
   justify-content: space-between;
   align-items: center;
   padding-right: 10px;
-
-  .container {
-    display: flex;
-    flex-wrap: nowrap;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
 
   .btn.btn-primary {
     outline: none;
@@ -188,7 +179,6 @@
     justify-content: center;
     color: black;
     align-items: center;
-    width: 20%;
 
     a,
     a:visited,
@@ -216,9 +206,6 @@
         height: 18px;
       }
     }
-  }
-  &_Left {
-    width: 20%;
   }
 }
 
@@ -317,6 +304,15 @@
   .modal-body {
     iframe {
       height: 315px;
+    }
+  }
+  .Footer {
+    .container {
+      display: flex;
+      flex-wrap: nowrap;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
     }
   }
 }
