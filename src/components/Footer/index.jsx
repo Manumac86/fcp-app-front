@@ -2,7 +2,6 @@ import React from 'react';
 import spotify from '../../assets/icons/spotify.svg';
 import instagram from '../../assets/icons/instagram.svg';
 import facebook from '../../assets/icons/facebook.svg';
-import twitter from '../../assets/icons/twitter.svg';
 import youTube from '../../assets/icons/youtube.svg';
 
 const Footer = () => {
@@ -20,14 +19,16 @@ const Footer = () => {
           </a>
         </div>
         <div className="Footer_Right">
+          <a href="https://www.fcp.org.ar" target="_blank" rel="noreferrer" style={{color: 'white', textDecoration: 'none', padding: '5px 0'}}>
+            Fundación Cultural Patagonia
+          </a>
+        </div>
+        <div className="Footer_Right">
           <a className="p-2" href="https://www.facebook.com/FCPatagonia1" target="_blank" rel="noreferrer">
             <img src={facebook} alt="" />
           </a>
           <a className="p-2" href="https://www.instagram.com/fcpatagonia/" target="_blank" rel="noreferrer">
             <img src={instagram} alt="" />
-          </a>
-          <a className="p-2" href="https://fcp.org.ar/" target="_blank" rel="noreferrer">
-            <img src={twitter} alt="" />
           </a>
           <a
             className="p-2"
