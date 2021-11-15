@@ -178,7 +178,7 @@ function App() {
         />
       }
       {
-        !isContestActive && !isLoadingVideos && <div className="VideoList" style={{height: 'calc(100vh - 80px', fontSize: "3em"}}>No hay concursos activos! Verifica nuestras redes para saber más.</div>
+        !isContestActive && !isLoadingVideos && <div className="VideoList" style={{height: 'calc(100vh - 80px', fontSize: "3em"}}>Votación finalizada. Volvé el 19 de noviembre para conocer los resultados, o consultalos en nuestras redes.</div>
       }
       <Footer />
       {isModalOpen && (
